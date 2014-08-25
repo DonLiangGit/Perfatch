@@ -15,7 +15,7 @@ import android.os.Build;
 
 public class SplashActivity extends Activity {
 
-	private static int delayTime = 2000;
+	private static int delayTime = 1500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ public class SplashActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(SplashActivity.this, MainActivity.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.push_left_in, 0);
 				finish();
 			}}, delayTime);
 //        if (savedInstanceState == null) {
