@@ -12,11 +12,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.Light.NoTitleBar">
         <activity
             android:name="com.donliang.perfatch.SplashActivity"
             android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
         </activity>
         <activity
             android:name="com.donliang.perfatch.MainActivity"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main" >         
         </activity>
     </application>
 
