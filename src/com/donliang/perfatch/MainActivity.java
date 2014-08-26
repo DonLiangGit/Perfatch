@@ -1,6 +1,5 @@
 package com.donliang.perfatch;
 
-
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import android.app.Activity;
@@ -15,13 +14,18 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TabHost;
 import android.os.Build;
 
 public class MainActivity extends FragmentActivity {
 
 	private MyAdapter mAdapter;
 	private ViewPager mPager;
+	
+	private String[] tabs = { "Text", "Photo" };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +59,7 @@ public class MainActivity extends FragmentActivity {
 				if (mAdapter!=null && mAdapter.getCount()>1) {
 					if(position == 0) {
 						menu.setMode(SlidingMenu.LEFT);
-						menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-					} else if(mPager.getCurrentItem() == mAdapter.getCount()-1) {
-						menu.setMode(SlidingMenu.RIGHT);
-						menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+						menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);					
 					} else {
 						menu.setMode(SlidingMenu.LEFT_RIGHT);
                         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
@@ -78,6 +79,16 @@ public class MainActivity extends FragmentActivity {
 				
 			}
 		});
+
+        ImageButton menuButton = (ImageButton)findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				menu.showMenu();
+			}
+        	
+        });
 	}
 
 	@Override
