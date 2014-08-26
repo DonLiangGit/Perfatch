@@ -1,6 +1,8 @@
 package com.donliang.perfatch;
 
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -35,16 +37,47 @@ public class MainActivity extends FragmentActivity {
 
 	private void MainUI() {
 		// TODO Auto-generated method stub
-//		SlidingMenu menu = new SlidingMenu(this);
-//		menu.setMode(SlidingMenu.LEFT);
-//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-//        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-//        menu.setFadeDegree(0.8f);
-//        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+		
+		final SlidingMenu menu = new SlidingMenu(this);
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.8f);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         
         mPager = (ViewPager) findViewById(R.id.MainPager);
         mAdapter = new MyAdapter(getSupportFragmentManager());
         mPager.setAdapter(mAdapter);
+        
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        	
+			@Override
+			public void onPageSelected(int position) {
+				// TODO Auto-generated method stub
+				if (mAdapter!=null && mAdapter.getCount()>1) {
+					if(position == 0) {
+						menu.setMode(SlidingMenu.LEFT);
+						menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+					} else if(mPager.getCurrentItem() == mAdapter.getCount()-1) {
+						menu.setMode(SlidingMenu.RIGHT);
+						menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+					} else {
+						menu.setMode(SlidingMenu.LEFT_RIGHT);
+                        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+					}
+				}
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	@Override
