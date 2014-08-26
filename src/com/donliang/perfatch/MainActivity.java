@@ -1,11 +1,14 @@
 package com.donliang.perfatch;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
+	private MyAdapter mAdapter;
+	private ViewPager mPager;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,12 +35,16 @@ public class MainActivity extends Activity {
 
 	private void MainUI() {
 		// TODO Auto-generated method stub
-		SlidingMenu menu = new SlidingMenu(this);
-		menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-        menu.setFadeDegree(0.8f);
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+//		SlidingMenu menu = new SlidingMenu(this);
+//		menu.setMode(SlidingMenu.LEFT);
+//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+//        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+//        menu.setFadeDegree(0.8f);
+//        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        
+        mPager = (ViewPager) findViewById(R.id.MainPager);
+        mAdapter = new MyAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mAdapter);
 	}
 
 	@Override
@@ -74,4 +84,32 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	public class MyAdapter extends FragmentPagerAdapter {
+
+		public MyAdapter(FragmentManager fm) {
+			super(fm);
+			// TODO Auto-generated constructor stub
+		}
+
+		@Override
+		public android.support.v4.app.Fragment getItem(int position) {
+			// TODO Auto-generated method stub
+			switch (position) {
+			case 0:
+				return new ImageFragment(R.drawable.frag_img2);
+			case 1:
+				return new ImageFragment(R.drawable.frag_img3);
+			case 2:
+				return new ImageFragment(R.drawable.frag_img4);
+			}
+			return null;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 3;
+		}
+
+	}
 }
