@@ -4,6 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/profile_bg"
     android:orientation="vertical"
     tools:context="com.donliang.perfatch.MainActivity"
     tools:ignore="MergeRootFrame" >
@@ -11,13 +12,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="550dp"
-        android:background="#e72529"
+        android:background="#CCe72529"
         android:layout_weight="1" >
 
         <ImageButton
             android:id="@+id/menuButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="22dp"
@@ -30,14 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="#F7F8F8"
         android:gravity="bottom" >
         
         <android.support.v4.view.ViewPager
         android:id="@+id/MainPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+        
+        <android.support.v4.view.PagerTabStrip
+			android:id="@+id/pts_main"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" 
+			android:background="#CCe72529"/>
+		</android.support.v4.view.ViewPager>
     </LinearLayout>
 
     

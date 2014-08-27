@@ -5,11 +5,14 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,13 +22,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.os.Build;
+import android.provider.DocumentsContract.Root;
 
 public class MainActivity extends FragmentActivity {
 
 	private MyAdapter mAdapter;
 	private ViewPager mPager;
-	
-	private String[] tabs = { "Text", "Photo" };
+	private static final String[] titles = { "one", "two", "three" };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,7 @@ public class MainActivity extends FragmentActivity {
 				
 			}
 		});
-
+        
         ImageButton menuButton = (ImageButton)findViewById(R.id.menuButton);
         menuButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -89,8 +92,18 @@ public class MainActivity extends FragmentActivity {
 			}
         	
         });
+	
+        PagerTabStrip strip = (PagerTabStrip)findViewById(R.id.pts_main);
+        strip.setDrawFullUnderline(false);
+        strip.setTextColor(Color.parseColor("#F7F8F8"));
+        strip.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
+        strip.setTabIndicatorColor(Color.parseColor("#e72529"));
+        strip.setNonPrimaryAlpha(0.5f);
+        strip.setTextSpacing(50);
+        
 	}
-
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -153,6 +166,11 @@ public class MainActivity extends FragmentActivity {
 		public int getCount() {
 			// TODO Auto-generated method stub
 			return 3;
+		}
+		
+		@Override
+		public CharSequence getPageTitle(int position) {
+		    return titles[position];
 		}
 
 	}
