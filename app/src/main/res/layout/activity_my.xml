@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/profile_bg"
     tools:context=".MyActivity" >
 
     <RelativeLayout
@@ -12,13 +13,63 @@
         android:layout_weight="1"
         android:id="@+id/relativeLayout">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/profile_icon"
+            app:border_width="3dp"
+            app:border_color="#EC5356"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Barbara Homs"
+            android:textColor="#FFFFFF"
+            android:id="@+id/profile_name"
+            android:layout_below="@+id/profile_image"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="20dp"
+            android:id="@+id/profile_location"
+            android:background="@drawable/location"
+            android:alpha=".50"
+            android:layout_toStartOf="@+id/location"
+            android:layout_below="@+id/profile_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Barcelona"
+            android:textColor="#FFFFFF"
+            android:alpha=".50"
+            android:id="@+id/location"
+            android:layout_alignBottom="@+id/profile_location"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:id="@+id/slidingmenu_button"
+            android:background="@drawable/nav_white"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="21dp"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
     <com.astuetz.PagerSlidingTabStrip
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="48dip"
+        android:layout_height="40dip"
         android:layout_below="@+id/relativeLayout"
         android:background="#CCe72529"
         app:pstsShouldExpand="true"

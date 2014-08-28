@@ -35,13 +35,36 @@ public class MyActivity extends FragmentActivity {
         PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(mPager);
 
-        SlidingMenu menu = new SlidingMenu(this);
-        menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        // Bind slidingMenu to Activity
+        final SlidingMenu menu = new SlidingMenu(this);
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         menu.setFadeDegree(0.35f);
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 
+        tabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(mAdapter.getCount() > 1) {
+                    if(position == 0) {
+                        menu.setMode(SlidingMenu.LEFT);
+                        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+                    } else {
+                        menu.setMode(SlidingMenu.LEFT_RIGHT);
+                        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 
@@ -66,7 +89,7 @@ public class MyActivity extends FragmentActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "Categories", "Home", "Top Paid"};
+        private final String[] TITLES = { "Matching", "Social", "More"};
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);

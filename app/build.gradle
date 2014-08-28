@@ -23,4 +23,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile project(':libs:SlidingMenuLibrary')
+    compile 'de.hdodenhof:circleimageview:1.2.0'
 }
