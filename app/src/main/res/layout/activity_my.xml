@@ -74,6 +74,10 @@
         android:background="#CCe72529"
         app:pstsShouldExpand="true"
         app:pstsTabSwitch="true"
+        app:pstsActivateTextColor="#FFFFFF"
+        app:pstsDeactivateTextColor="#80FFFFFF"
+        app:pstsIndicatorColor="#FFFFFF"
+        app:pstsIndicatorHeight="3dp"
         android:layout_alignParentStart="true" />
 
     <LinearLayout
