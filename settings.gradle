@@ -1,1 +1,2 @@
 include ':app',':libs:SlidingMenuLibrary'
+include ':libs:PagerSlidingTabStrip'
