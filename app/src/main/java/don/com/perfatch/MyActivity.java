@@ -89,7 +89,7 @@ public class MyActivity extends FragmentActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "Matching", "Social", "More"};
+        private final String[] TITLES = { "Matching", "Social", "Follows"};
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -108,7 +108,7 @@ public class MyActivity extends FragmentActivity {
                 case 0:
                     return new don.com.perfatch.ImageFragment(R.drawable.frag_img2);
                 case 1:
-                    return new don.com.perfatch.ImageFragment(R.drawable.frag_img3);
+                    return new SocialFragment();
                 case 2:
                     return new don.com.perfatch.ImageFragment(R.drawable.frag_img4);
             }
