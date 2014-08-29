@@ -106,7 +106,7 @@ public class MyActivity extends FragmentActivity {
             // TODO Auto-generated method stub
             switch (position) {
                 case 0:
-                    return new don.com.perfatch.ImageFragment(R.drawable.frag_img2);
+                    return new MatchFragment();
                 case 1:
                     return new SocialFragment();
                 case 2:
